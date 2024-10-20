@@ -32,7 +32,7 @@ BUILD_ASSERT(DT_NODE_EXISTS(DT_ALIAS(led_blue)),
 // GPIO-based LED device and indices of red/green/blue LEDs inside its DT node
 static const struct device *led_dev = DEVICE_DT_GET(LED_PWM_NODE_ID);
 
-static const uint8_t pwm_test = DT_NODE_CHILD_IDX(DT_ALIAS(pwm-led0));
+static const uint8_t pwm_test = DT_NODE_CHILD_IDX(DT_ALIAS(pwm0));
 
 // color values as specified by an RGB bitfield
 enum led_color_t {
