@@ -37,6 +37,10 @@ config RGBLED_WIDGET_LAYER_BLINK_MS
     int "Blink and wait duration for layer indicator"
     default 100
 
+config RGBLED_WIDGET_LED_BRIGHTNESS
+    int "Brightness used in leds"
+    default 50
+
 if RGBLED_WIDGET_SHOW_LAYER_CHANGE
 
 config RGBLED_WIDGET_LAYER_DEBOUNCE_MS

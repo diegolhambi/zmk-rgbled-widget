@@ -213,7 +213,8 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
         // turn appropriate LEDs on
         for (uint8_t pos = 0; pos < 3; pos++) {
             if (BIT(pos) & blink.color) {
-                led_on(led_dev, rgb_idx[pos]);
+                //led_on(led_dev, rgb_idx[pos]);
+                led_set_brightness(led_dev, rgb_idx[pos], 50);
             }
         }
 
@@ -223,7 +224,8 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
         // turn appropriate LEDs off
         for (uint8_t pos = 0; pos < 3; pos++) {
             if (BIT(pos) & blink.color) {
-                led_off(led_dev, rgb_idx[pos]);
+                //led_off(led_dev, rgb_idx[pos]);
+                led_set_brightness(led_dev, rgb_idx[pos], 0);
             }
         }
 
