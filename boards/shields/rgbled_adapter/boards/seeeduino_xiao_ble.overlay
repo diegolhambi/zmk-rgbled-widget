@@ -1,11 +1,21 @@
 / {
-    aliases {
-        led-red = &led0;
-        led-green = &led1;
-        led-blue = &led2;
-    };
-
-    leds {
+    pwm-leds {
         status = "okay";
+        compatible = "pwm-leds";
+        pwm0: pwm_0 {
+            label = "red";
+            pwms = <&pwm0 26 1000000 1>;
+            max-brightness = <255>;
+        };
+        pwm1: pwm_1 {
+            label = "green";
+            pwms = <&pwm1 30 1000000 1>;
+            max-brightness = <255>;
+        };
+        pwm2: pwm_2 {
+            label = "blue";
+            pwms = <&pwm2 6 1000000 1>;
+            max-brightness = <255>;
+        };
     };
 };
