@@ -4,17 +4,17 @@
         compatible = "pwm-leds";
         pwm1: pwm_1 {
             label = "red";
-            pwms = <&pwm1 26 1000000 1>;
+            pwms = <&pwm_led1 26 1000000 1>;
             max-brightness = <255>;
         };
         pwm2: pwm_2 {
             label = "green";
-            pwms = <&pwm2 30 1000000 1>;
+            pwms = <&pwm_led2 30 1000000 1>;
             max-brightness = <255>;
         };
         pwm3: pwm_3 {
             label = "blue";
-            pwms = <&pwm3 6 1000000 1>;
+            pwms = <&pwm_led3 6 1000000 1>;
             max-brightness = <255>;
         };
     };
