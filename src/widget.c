@@ -20,7 +20,7 @@
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
-#define LED_PWM_NODE_ID	DT_COMPAT_GET_ANY_STATUS_OKAY(pwm_leds)
+#define LED_PWM_NODE_ID DT_COMPAT_GET_ANY_STATUS_OKAY(pwm_leds)
 
 BUILD_ASSERT(DT_NODE_EXISTS(DT_ALIAS(led_red)),
              "An alias for a red LED is not found for RGBLED_WIDGET");
@@ -31,9 +31,8 @@ BUILD_ASSERT(DT_NODE_EXISTS(DT_ALIAS(led_blue)),
 
 // GPIO-based LED device and indices of red/green/blue LEDs inside its DT node
 static const struct device *led_dev = DEVICE_DT_GET(LED_PWM_NODE_ID);
-static const uint8_t rgb_idx[] = {DT_NODE_CHILD_IDX(DT_ALIAS(led_red)),
-                                  DT_NODE_CHILD_IDX(DT_ALIAS(led_green)),
-                                  DT_NODE_CHILD_IDX(DT_ALIAS(led_blue))};
+
+static const uint8_t pwm_test = DT_NODE_CHILD_IDX(DT_ALIAS(pwm-led0));
 
 // color values as specified by an RGB bitfield
 enum led_color_t {
@@ -214,7 +213,7 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
         for (uint8_t pos = 0; pos < 3; pos++) {
             if (BIT(pos) & blink.color) {
                 //led_on(led_dev, rgb_idx[pos]);
-                led_set_brightness(led_dev, rgb_idx[pos], 5);
+                led_set_brightness(led_dev, pwm_test, 15);
             }
         }
 
@@ -225,7 +224,7 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
         for (uint8_t pos = 0; pos < 3; pos++) {
             if (BIT(pos) & blink.color) {
                 //led_off(led_dev, rgb_idx[pos]);
-                led_set_brightness(led_dev, rgb_idx[pos], 0);
+                led_set_brightness(led_dev, pwm_test, 0);
             }
         }
 
