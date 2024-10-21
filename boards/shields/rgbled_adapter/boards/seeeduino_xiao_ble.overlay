@@ -1,6 +1,4 @@
 / {
-    /delete-node/ leds;
-
     aliases {
         led-red = &led0;
         led-green = &led1;
