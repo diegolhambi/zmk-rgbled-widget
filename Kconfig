@@ -6,6 +6,12 @@ if RGBLED_WIDGET
 config LED
     default y
 
+config PWM
+    default y
+
+config LED_PWM
+    default y
+
 config RGBLED_WIDGET_BATTERY_BLINK_MS
     int "Duration of battery level blink in ms"
     default 2000
