@@ -5,11 +5,6 @@
         led-blue = &pwm_led_2;
     };
 
-    leds {
-		status = "disabled";
-	};
-
-
     pwmleds: pwmleds {
         compatible = "pwm-leds";
         pwm_led_0: pwm_led_0 {
@@ -26,6 +21,12 @@
         };
     };
 };
+
+&pwmleds {
+	/* NOTE: enable here because it is disabled by default */
+	status = "okay";
+};
+
 
 &pwm0 {
     status = "okay";

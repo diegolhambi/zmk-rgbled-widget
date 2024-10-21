@@ -206,6 +206,8 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
     while (true) {
         // wait until a blink item is received and process it
         struct blink_item blink;
+        uint16_t level;
+
         k_msgq_get(&led_msgq, &blink, K_FOREVER);
         LOG_DBG("Got a blink item from msgq, color %d, duration %d", blink.color,
                 blink.duration_ms);
@@ -214,7 +216,11 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
         for (uint8_t pos = 0; pos < 3; pos++) {
             if (BIT(pos) & blink.color) {
                 //led_on(led_dev, rgb_idx[pos]);
-                led_set_brightness(led_dev, rgb_idx[pos], 1);
+
+                for (level = 0; level <= 100; level++) {
+                    led_set_brightness(led_dev, rgb_idx[pos], level);
+                    k_sleep(K_MSEC(10));
+                }
             }
         }
 
