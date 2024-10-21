@@ -208,12 +208,10 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
         struct blink_item blink;
         uint16_t level;
 
-                // turn appropriate LEDs off
         for (uint8_t pos = 0; pos < 3; pos++) {
-            if (BIT(pos) & blink.color) {
-                //led_off(led_dev, rgb_idx[pos]);
-                led_set_brightness(led_dev, rgb_idx[pos], 0);
-            }
+
+            led_set_brightness(led_dev, rgb_idx[pos], 0);
+
         }
 
         k_msgq_get(&led_msgq, &blink, K_FOREVER);
