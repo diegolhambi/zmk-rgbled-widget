@@ -5,8 +5,12 @@
         led-blue = &pwm_led_2;
     };
 
+    leds {
+		status = "disabled";
+	};
 
-    leds: pwmleds {
+
+    pwmleds: pwmleds {
         compatible = "pwm-leds";
         pwm_led_0: pwm_led_0 {
             label = "red";
