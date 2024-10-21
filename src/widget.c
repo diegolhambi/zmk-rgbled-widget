@@ -215,7 +215,7 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
         // turn appropriate LEDs on
         for (uint8_t pos = 0; pos < 3; pos++) {
             if (BIT(pos) & blink.color) {
-                led_set_brightness(led_dev, rgb_idx[pos], 20);
+                led_set_brightness(led_dev, rgb_idx[pos], CONFIG_RGBLED_WIDGET_LED_BRIGHTNESS);
             }
         }
 
@@ -249,6 +249,7 @@ extern void led_init_thread(void *d0, void *d1, void *d2) {
     ARG_UNUSED(d1);
     ARG_UNUSED(d2);
 
+    // initialize LEDs
     for (uint8_t pos = 0; pos < 3; pos++) {
         led_set_brightness(led_dev, rgb_idx[pos], 0);
     }

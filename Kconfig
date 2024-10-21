@@ -45,7 +45,7 @@ config RGBLED_WIDGET_LAYER_BLINK_MS
 
 config RGBLED_WIDGET_LED_BRIGHTNESS
     int "Brightness used in leds"
-    default 50
+    default 40
 
 if RGBLED_WIDGET_SHOW_LAYER_CHANGE
 
