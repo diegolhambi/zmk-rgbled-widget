@@ -209,10 +209,9 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
         uint16_t level;
 
         for (uint8_t pos = 0; pos < 3; pos++) {
-
             led_set_brightness(led_dev, rgb_idx[pos], 0);
-
         }
+
 
         k_msgq_get(&led_msgq, &blink, K_FOREVER);
         LOG_DBG("Got a blink item from msgq, color %d, duration %d", blink.color,
@@ -223,10 +222,7 @@ extern void led_process_thread(void *d0, void *d1, void *d2) {
             if (BIT(pos) & blink.color) {
                 //led_on(led_dev, rgb_idx[pos]);
 
-                for (level = 0; level <= 100; level++) {
-                    led_set_brightness(led_dev, rgb_idx[pos], level);
-                    k_sleep(K_MSEC(10));
-                }
+                led_set_brightness(led_dev, rgb_idx[pos], 40);
             }
         }
 
