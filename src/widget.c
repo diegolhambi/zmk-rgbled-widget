@@ -249,11 +249,6 @@ extern void led_init_thread(void *d0, void *d1, void *d2) {
     ARG_UNUSED(d1);
     ARG_UNUSED(d2);
 
-    // initialize LEDs
-    for (uint8_t pos = 0; pos < 3; pos++) {
-        led_set_brightness(led_dev, rgb_idx[pos], 0);
-    }
-
 #if IS_ENABLED(CONFIG_ZMK_BATTERY_REPORTING)
     // check and indicate battery level on thread start
     LOG_INF("Indicating initial battery status");
